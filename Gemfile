@@ -32,6 +32,9 @@ gem 'slim', '~> 4.1'
 
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
+gem 'paperclip', '~> 6.0.0'
+gem 'paperclip-cloudinary'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
