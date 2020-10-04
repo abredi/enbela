@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "articles/show", type: :view do
   before(:each) do
     @article = assign(:article, Article.create!(
-      title: "Title",
-      text: "MyText"
-    ))
+                                  title: "Title",
+                                  text: "MyText"
+                                ))
   end
 
   it "renders attributes in <p>" do
