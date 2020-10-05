@@ -6,7 +6,7 @@ module HeaderHelper
 
   def auth_links
     if signed_in?
-      concat menu_link_to(current_user.name, user_path(current_user.id))
+      concat menu_link_to(current_user.name, user_path(current_user.id), cls: 'text-right')
       menu_link_to 'Log out', session_path(current_user.id), mtd: :delete
     else
       concat menu_link_to 'Login', new_session_path, cls: 'text-right'

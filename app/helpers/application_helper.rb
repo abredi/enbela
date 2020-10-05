@@ -39,6 +39,11 @@ module ApplicationHelper
     end
   end
 
+  def capitalize_words(string)
+    string.gsub(/\S+/, &:capitalize)
+  end
+
+
   include HeaderHelper
   include ArticlesHelper
 end

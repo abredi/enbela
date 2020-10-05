@@ -1,12 +1,4 @@
-p#notice = notice
 
-p
-  strong Title:
-  = @article.title
-p
-  strong Text:
-  = @article.text
+.grid.flex-1.grid-cols-4.px-3
+  = list_articles(@articles)
 
-=> link_to 'Edit', edit_article_path(@article)
-'|
-=< link_to 'Back', articles_path

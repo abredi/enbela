@@ -11,7 +11,7 @@ class Article < ApplicationRecord
   validates_presence_of :text
 
   scope :featured, lambda {
-    Article.joins(:votes).select('articles.*, count(article_id) AS count_all')
+    Article.joins(:votes, :category).select('articles.*, count(article_id) AS count_all')
            .group('article_id, title, text, articles.id')
            .order(count_all: :desc).limit(1)
   }

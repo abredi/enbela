@@ -3,17 +3,13 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[edit update destroy]
 
   # GET /articles
-  # GET /articles.json
   def index
     @featured = Article.featured
 
     @articles = Article.categories
-    # .joins(:category).select('articles.*, priority, name').distinct.order(priority: :desc).to_a
-
   end
 
   # GET /articles/1
-  # GET /articles/1.json
   def show
     @articles = Article.articles(params[:id])
   end
@@ -27,14 +23,12 @@ class ArticlesController < ApplicationController
   def edit; end
 
   # POST /articles
-  # POST /articles.json
-  #
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
 
     if @article.save
-      flash.notice = 'Article was successfully created.'
+      flash[:info] = 'Article was successfully created.'
       redirect_to articles_path
     else
       render :new
@@ -44,7 +38,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
-      flash.notice = 'Article was update created.'
+      flash[:info] = 'Article was successfully updated.'
       redirect_to articles_path
     else
       render :edit
@@ -54,7 +48,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   def destroy
     @article.destroy
-    flash.info = 'Article was successfully destroyed.'
+    flash[:info] = 'Article was successfully destroyed.'
     redirect_to articles_url
   end
 
@@ -67,6 +61,6 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :text, :image)
+    params.require(:article).permit(:title, :text, :image, :user_id, :category_id )
   end
 end

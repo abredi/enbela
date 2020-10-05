@@ -1,9 +1,6 @@
-p#notice = notice
+.m-4
+  p
+    strong.text-sm.mx-4.my-1 Name:
+    .text-3xl.mx-4 = capitalize_words(@user.name)
 
-p
-  strong Name:
-  = @user.name
-
-=> link_to 'Edit', edit_user_path(@user)
-'|
-=< link_to 'Back', users_path
+=> link_to 'Edit', edit_user_path(@user), class: 'm-4 text-sm'
