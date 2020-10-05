@@ -1,5 +1,8 @@
 h1 Listing articles
 
+.p-4.m-12
+  = @featured.inspect
+
 table
   thead
     tr
@@ -15,7 +18,7 @@ table
       tr
         td = article.title
         td = article.text
-        td = image_tag(article.image.present? ? article.image.url : 'missing.png', class: 'object-cover w-12 h-12')
+        td = image_tag(article.image.present? ? article.image.url : 'missing.svg', class: 'object-cover w-12 h-12')
         td = link_to 'Show', article
         td = link_to 'Edit', edit_article_path(article)
         td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete

@@ -5,12 +5,18 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @featured = Article.featured
+
+    @articles = Article.categories
+    # .joins(:category).select('articles.*, priority, name').distinct.order(priority: :desc).to_a
+
   end
 
   # GET /articles/1
   # GET /articles/1.json
-  def show; end
+  def show
+    @articles = Article.articles(params[:id])
+  end
 
   # GET /articles/new
   def new
