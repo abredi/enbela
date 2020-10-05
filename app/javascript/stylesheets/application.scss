@@ -1,8 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
+
 /* purgecss start ignore */
 .min-h-75 {
   min-height: 75vh;
 }
+
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
