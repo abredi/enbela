@@ -22,6 +22,6 @@ class Article < ApplicationRecord
 
   scope :articles, lambda { |id|
     Article.joins(:category, :user).select('users.*, articles.*, title, user_id, text, category_id')
-           .where(categories: {id: id}).order(:updated_at).to_a
+           .where(categories: { id: id }).order(:updated_at).to_a
   }
 end
