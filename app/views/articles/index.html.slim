@@ -1,28 +1,4 @@
-h1 Listing articles
-
-.p-4.m-12
-  = @featured.inspect
-
-table
-  thead
-    tr
-      th Title
-      th Text
-      th Image
-      th
-      th
-      th
-
-  tbody
-    - @articles.each do |article|
-      tr
-        td = article.title
-        td = article.text
-        td = image_tag(article.image.present? ? article.image.url : 'missing.svg', class: 'object-cover w-12 h-12')
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Article', new_article_path
+.flex-1.w-screen.grid.grid-cols-4.grid-rows-3.black-filter.min-h-75
+  main.col-span-3.row-span-2.relative
+    = category_content(@featured[0], true)
+  = list_categories(@articles)

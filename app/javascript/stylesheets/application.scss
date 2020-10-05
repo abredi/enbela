@@ -1,5 +1,10 @@
-@import "tailwindcss/base";
+@import 'tailwindcss/base';
 
-@import "tailwindcss/components";
+@import 'tailwindcss/components';
 
-@import "tailwindcss/utilities";  
+/**/
+.min-h-75 {
+  min-height: 75vh;
+}
+
+@import 'tailwindcss/utilities';  
