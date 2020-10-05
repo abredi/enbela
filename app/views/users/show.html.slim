@@ -1,6 +1,7 @@
-.m-4
-  p
-    strong.text-sm.mx-4.my-1 Name:
-    .text-3xl.mx-4 = capitalize_words(@user.name)
+.m-4.min-h-75
+  .m-4
+    p
+      strong.text-sm.mx-4.my-1 Name:
+      .text-3xl.mx-4 = capitalize_words(@user.name)
 
-=> link_to 'Edit', edit_user_path(@user), class: 'm-4 text-sm'
+  => link_to 'Edit', edit_user_path(@user), class: 'm-4 text-sm'
