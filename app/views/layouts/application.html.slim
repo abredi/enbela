@@ -11,7 +11,9 @@ html lang='en'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  
+
   body.bg-black.text-white
+
+    include _header.html
 
     = yield

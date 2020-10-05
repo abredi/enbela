@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def signed_in?
     return true if session[:user_id]
 
@@ -15,6 +16,28 @@ module ApplicationHelper
   def current_user
     return unless session[:user_id]
 
-    @current_user ||= session[:user]
+    @current_user ||= OpenStruct.new(session[:user])
   end
+
+  def notification_banner
+    flash.each do |msg|
+      css_class = alert_class(msg[0])
+      concat content_tag(:div, content_tag(:p, msg[1], class: 'text-sm'), class: 'flex px-8 py-4 bg-' + css_class)
+    end
+  end
+
+  private
+
+  def alert_class(msg)
+    case msg
+    when 'info'
+      'blue-400'
+    when 'warning'
+      'orange-400'
+    else
+      'red-500'
+    end
+  end
+
+  include HeaderHelper
 end
