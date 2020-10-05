@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ArticlesHelper
   def mini_show(article)
     image_tag(article.image.url, class: 'object-cover w-12 h-12') if article.image.present?
@@ -66,25 +64,25 @@ module ArticlesHelper
     cont
   end
 
-  def article_builder(a)
+  def article_builder(article)
     content_tag(:div,
-                image_tag(a.image.present? ? a.image.url : 'missing.svg', class: 'object-cover w-full h-full my-2'),
+                image_tag(article.image.present? ? article.image.url : 'missing.svg', class: 'object-cover w-full h-full my-2'),
                 class: 'bg-gray-500')
       .concat(
         content_tag(:div, class: 'p-4') do
-          content_tag(:h2, a.user.name.capitalize,
+          content_tag(:h2, article.user.name.capitalize,
                       class: 'pb-1 mb-3 text-xl border-b-4 border-solid w-maxContent border-orange-1000
                               text-orange-1000')
               .concat(
-                content_tag(:h1, a.title, class: 'mb-3 text-xl font-bold')
+                content_tag(:h1, article.title, class: 'mb-3 text-xl font-bold')
               ).concat(
-                content_tag(:p, a.text[0..250], class: 'text-sm mb-4')
+                content_tag(:p, article.text[0..250], class: 'text-sm mb-4')
               ).concat(
-                link_to('Vote', vote_path(a.id), method: :put, class: '
+                link_to('Vote', vote_path(article.id), method: :put, class: '
                 bg-armadillo-500 hover:bg-armadillo-400 text-white font-bold py-2 mt-4 cursor-pointer
                 px-4 border-b-4 border-armadillo-700 hover:border-armadillo-500 rounded')
               ).concat(
-                link_to('Edit', edit_article_path(a), class: 'bg-armadillo-700 hover:bg-armadillo-600
+                link_to('Edit', edit_article_path(article), class: 'bg-armadillo-700 hover:bg-armadillo-600
                 text-white font-bold py-2 mt-4 cursor-pointer mx-4
                 px-4 border-b-4 border-armadillo-900 hover:border-armadillo-700 rounded')
               ).concat(
