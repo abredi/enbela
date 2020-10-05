@@ -1,0 +1,20 @@
+.relative.bottom-0.flex.flex-row.justify-between.w-full.p-2.bg-armadillo-500.z-50
+  span.brand
+    = image_tag('logo.svg', class: 'w-24 h-full bg-no-repeat border-none')
+  ul.flex.flex-1.justify-center.items-center
+    li.px-1.py-2.m-1
+      a.text-orange-1000.hover:bg-transparent.hover:text-gray-100 href="#{articles_path}" Policy privacy
+    li.px-1.py-2.m-1
+      a.text-orange-1000.hover:bg-transparent.hover:text-gray-100 href="#" Terms and Conditions
+    li.px-1.py-2.m-1
+        small.text-gray-300 Copyright 2020. All rights reserved.
+    ul.flex.left-corner.flex-none
+      li.px-1.py-2.m-1.flex.flex-row.justify-between
+        small.flex.items-center.text-gray-300 Connect with us:
+        a.block.bg-orange-1000.rounded-full.w-8.h-8.flex.justify-center.align.center.mx-2 href="#"
+          = image_tag  "twitter.svg", class: 'w-6'
+        a.block.bg-orange-1000.rounded-full.w-8.h-8.flex.justify-center.align.center.mx-2 href="#"
+          = image_tag  "camera.svg", class: 'w-6'
+        a.block.bg-orange-1000.rounded-full.w-8.h-8.flex.justify-center.align.center.mx-2 href="#"
+          = image_tag "facebook.svg", class: 'w-6'
+
