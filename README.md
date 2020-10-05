@@ -1,6 +1,6 @@
 ![Hireable](https://cdn.rawgit.com/hiendv/hireable/master/styles/default/yes.svg)
 # Enbla The recipe website for all delicious foods around the world.
-## This web application is developed to fulfill the Ruby on rails training capstone project at Microverse.
+## This web application developed to fulfill the Ruby on rails training capstone project at Microverse.
 
 ## Built With
 
