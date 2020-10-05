@@ -16,7 +16,7 @@ module ApplicationHelper
   def current_user
     return unless session[:user_id]
 
-    @current_user ||= OpenStruct.new(session[:user])
+    @current_user ||= User.new(session[:user])
   end
 
   def notification_banner
@@ -40,4 +40,5 @@ module ApplicationHelper
   end
 
   include HeaderHelper
+  include ArticlesHelper
 end

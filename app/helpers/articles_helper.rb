@@ -33,7 +33,8 @@ module ArticlesHelper
   def category_content(article, main = false)
     return unless article
 
-    link_to article_path(root_path), class: 'absolute h-full' do
+    path = main ? root_path : article_path(article.category)
+    link_to path, class: 'absolute h-full' do
       image_tag(article.image.present? ? article.image.url : 'missing.svg',
                 opacity: 50,
                 class: 'object-cover z-neg h-full w-full')
