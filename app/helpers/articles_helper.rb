@@ -66,7 +66,8 @@ module ArticlesHelper
 
   def article_builder(article)
     content_tag(:div,
-                image_tag(article.image.present? ? article.image.url : 'missing.svg', class: 'object-cover w-full h-full my-2'),
+                image_tag(article.image.present? ? article.image.url : 'missing.svg',
+                          class: 'object-cover w-full h-full my-2'),
                 class: 'bg-gray-500')
       .concat(
         content_tag(:div, class: 'p-4') do
