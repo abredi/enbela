@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def signed_in?
     return true if session[:user_id]
 
@@ -42,7 +41,6 @@ module ApplicationHelper
   def capitalize_words(string)
     string.gsub(/\S+/, &:capitalize)
   end
-
 
   include HeaderHelper
   include ArticlesHelper
