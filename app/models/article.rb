@@ -12,13 +12,13 @@ class Article < ApplicationRecord
 
   scope :featured, lambda {
     Article.joins(:votes, :category).select('articles.*, count(article_id) AS count_all')
-        .group('article_id, title, text, articles.id')
-        .order(count_all: :desc).limit(1)
+      .group('article_id, title, text, articles.id')
+      .order(count_all: :desc).limit(1)
   }
 
   scope :articles, lambda { |id|
     Article.joins(:category, :user).select('users.*, articles.*, title, user_id, text, category_id')
-        .where(categories: {id: id}).order(:updated_at).to_a
+      .where(categories: { id: id }).order(:updated_at).to_a
   }
 
   scope :cat_list, lambda {
@@ -26,7 +26,8 @@ class Article < ApplicationRecord
                             category_id,
                             name,
                             priority,
-                            (select articles.id from articles where category_id = categories.id order by updated_at desc limit 1) as art_id
+                            (select articles.id from articles where category_id = categories.id
+                              order by updated_at desc limit 1) as art_id
                         FROM categories
                                  INNER JOIN articles ON articles.category_id = categories.id
                         GROUP BY categories.id, "categories"."name", category_id
@@ -34,5 +35,4 @@ class Article < ApplicationRecord
                     c on c.art_id = articles.id
     ').select('*').to_a
   }
-
 end
