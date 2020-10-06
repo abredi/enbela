@@ -15,10 +15,6 @@ class Article < ApplicationRecord
         .group('article_id, title, text, articles.id')
         .order(count_all: :desc).limit(1)
   }
-  scope :categories, lambda {
-    Article.joins(:category).select('articles.*, name, priority').distinct('name')
-        .order(priority: :desc).to_a
-  }
 
   scope :articles, lambda { |id|
     Article.joins(:category, :user).select('users.*, articles.*, title, user_id, text, category_id')
