@@ -6,7 +6,8 @@ class ArticlesController < ApplicationController
   def index
     @featured = Article.featured
 
-    @articles = Article.categories
+    # @articles = Article.categories
+    @articles = Article.cat_list
   end
 
   # GET /articles/1
