@@ -3,7 +3,6 @@ class VotesController < ApplicationController
   def update
     @vote = Vote.find_by(article_id: params[:id], user_id: current_user.id)
 
-    puts @vote.inspect
     if @vote
       flash.notice = 'You already voted before.'
       redirect_to articles_path

@@ -21,7 +21,7 @@ module ApplicationHelper
   def notification_banner
     flash.each do |msg|
       css_class = alert_class(msg[0])
-      concat content_tag(:div, content_tag(:p, msg[1], class: 'text-sm'), class: 'flex px-8 py-4 bg-' + css_class)
+      concat tag.div (tag.p msg[1], class: 'text-sm'), class: 'flex px-8 py-4 bg-' + css_class
     end
   end
 

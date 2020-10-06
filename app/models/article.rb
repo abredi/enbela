@@ -6,9 +6,9 @@ class Article < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  has_many :votes
-  validates_presence_of :title
-  validates_presence_of :text
+  has_many :votes, dependent: :destroy
+  validates :title, presence: true
+  validates :text, presence: true
 
   scope :featured, lambda {
     Article.joins(:votes, :category).select('articles.*, count(article_id) AS count_all')
