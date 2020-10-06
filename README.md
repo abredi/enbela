@@ -25,7 +25,7 @@ Postgres: >=9.5
 ### Get your copy 
 
 ```
-git clone https://github.com/abredi/ror-social-scaffold.git
+git clone https://github.com/abredi/enbela.git
 ```
 
 ### Setup
