@@ -1,8 +1,6 @@
 .max-w-2xl.mx-auto.mb-12 class='w-1/2'
   == simple_form_for @article do |f|
-    == f.error_notification
-    == f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
+    == error_notification(f)
     .w-full.px-2.mb-4.-mx-2
       = f.input :title, placeholder: 'Awesome Title', label_html: {class: 'block text-gray-700 text-sm font-bold mb-2'},
               input_html: {class: 'block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border\

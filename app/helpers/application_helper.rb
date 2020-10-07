@@ -1,4 +1,10 @@
 module ApplicationHelper
+
+  def error_notification(f)
+    concat f.error_notification
+    f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  end
+
   def signed_in?
     return true if session[:user_id]
 

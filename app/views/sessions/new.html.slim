@@ -1,8 +1,7 @@
 section.py-8.min-h-75
   div.w-full.max-w-sm.mx-auto
     = simple_form_for(@user, url: sessions_path) do |f|
-      = f.error_notification
-      = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+      == error_notification(f)
 
       .mb-4
         = f.input :name, label_html: {class: 'block text-gray-700 text-sm font-bold mb-2'},
