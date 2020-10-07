@@ -1,6 +1,6 @@
 RSpec.configure do |config|
   config.before(type: :feature) do
-    @user = User.create(name: 'recca')
+    @user = User.create!(name: 'recca')
     @category = Category.last.id
   end
 
