@@ -17,8 +17,23 @@ class Article < ApplicationRecord
   }
 
   scope :articles, lambda { |id|
-    Article.joins(:category, :user).select('users.*, articles.*, title, user_id, text, category_id')
-      .where(categories: { id: id }).order(:updated_at).to_a
+    Article.joins(:category, :user)
+      .select('users.*,
+               articles.*,
+               title,
+               user_id,
+               text,
+               (select count(av)
+                from votes av
+                where av.article_id = articles.id
+                  and av.user_id = users.id
+               ) as voted,
+               (select count(av)
+                from votes av
+                where av.article_id = articles.id
+               ) as total_votes')
+      .where(categories: {id: id}).order(:updated_at).to_a
+    # .select('users.*, articles.*, title, user_id, text, category_id')
   }
 
   scope :cat_list, lambda {

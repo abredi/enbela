@@ -6,5 +6,9 @@
   min-height: 75vh;
 }
 
+.w-maxContent {
+  width: max-content;
+}
+
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
