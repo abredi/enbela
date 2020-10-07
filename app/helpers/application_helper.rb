@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def error_notification(f)
-    concat f.error_notification
-    f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  def error_notification(form)
+    concat form.error_notification
+    form.error_notification message: form.object.errors[:base].to_sentence if form.object.errors[:base].present?
   end
 
   def signed_in?
