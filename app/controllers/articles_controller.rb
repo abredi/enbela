@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
-    @articles = Article.articles(params[:id])
+    @articles = Article.articles(params[:id], current_user.id)
   end
 
   # GET /articles/new

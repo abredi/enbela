@@ -5,8 +5,7 @@ RSpec.feature 'Votes', type: :feature do
 
   scenario 'redirect to create article page' do
     visit article_path(@category)
-    click_on 'Vote'
 
-    expect(page).to have_text('vote was successfully created.')
+    expect(page).to have_text('Voted')
   end
 end

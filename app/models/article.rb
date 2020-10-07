@@ -16,9 +16,9 @@ class Article < ApplicationRecord
       .order(count_all: :desc).limit(1)
   }
 
-  scope :articles, lambda { |id|
+  scope :articles, lambda { |id, u_id|
     Article.joins(:category, :user)
-      .select('users.*,
+      .select("users.*,
                articles.*,
                title,
                user_id,
@@ -26,14 +26,13 @@ class Article < ApplicationRecord
                (select count(av)
                 from votes av
                 where av.article_id = articles.id
-                  and av.user_id = users.id
+                  and av.user_id = #{u_id}
                ) as voted,
                (select count(av)
                 from votes av
                 where av.article_id = articles.id
-               ) as total_votes')
-      .where(categories: {id: id}).order(:updated_at).to_a
-    # .select('users.*, articles.*, title, user_id, text, category_id')
+               ) as total_votes")
+      .where(categories: { id: id }).order(:updated_at).to_a
   }
 
   scope :cat_list, lambda {

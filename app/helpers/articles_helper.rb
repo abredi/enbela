@@ -49,7 +49,7 @@ module ArticlesHelper
     content_tag(:div, class: "flex flex-col p-4 h-full #{justify}") do
       content_tag(:h1, link_to(heading, path),
                   class: 'z-50 text-xl leading-5 mb-4 text-orange-1000')
-          .concat(content_tag(:p, article.text[0..50], class: 'z-50 text-sm text-gray-200'))
+        .concat(content_tag(:p, article.text[0..50], class: 'z-50 text-sm text-gray-200'))
     end
   end
 
@@ -65,7 +65,7 @@ module ArticlesHelper
   end
 
   def voted?(article)
-    article.voted.positive?
+    article.voted == 1
   end
 
   def vote_text(article)
@@ -79,31 +79,31 @@ module ArticlesHelper
                 image_tag(article.image.present? ? article.image.url : 'missing.svg',
                           class: 'object-cover w-full h-full my-2'),
                 class: 'bg-gray-500')
-        .concat(
-          content_tag(:div, class: 'p-4') do
-            content_tag(:h2, article.user.name.capitalize,
-                        class: 'pb-1 mb-3 text-xl border-b-4 border-solid w-maxContent border-orange-1000
+      .concat(
+        content_tag(:div, class: 'p-4') do
+          content_tag(:h2, article.user.name.capitalize,
+                      class: 'pb-1 mb-3 text-xl border-b-4 border-solid w-maxContent border-orange-1000
                               text-orange-1000')
-                .concat(
-                  content_tag(:h1, article.title, class: 'mb-3 text-xl font-bold')
-                ).concat(
-                  content_tag(:p, article.text[0..250], class: 'text-sm mb-4')
-            ).concat(
-              link_to_unless(voted?(article), vote_text(article), vote_path(article.id), method: :put, class: '
+              .concat(
+                content_tag(:h1, article.title, class: 'mb-3 text-xl font-bold')
+              ).concat(
+                content_tag(:p, article.text[0..250], class: 'text-sm mb-4')
+              ).concat(
+                link_to_unless(voted?(article), vote_text(article), vote_path(article.id), method: :put, class: '
+                bg-armadillo-700 hover:bg-armadillo-600 vote_link
+                text-white font-normal py-2 mt-4 cursor-pointer mx-1
+                px-2 border-b-4 border-armadillo-900 hover:border-armadillo-700 rounded')
+              ).concat(
+                tag.span(article.total_votes, class: %w[mx-1 my-2 text-armadillo-500])
+              ).concat(
+                link_to('Edit', edit_article_path(article), class: '
                 bg-armadillo-700 hover:bg-armadillo-600
                 text-white font-normal py-2 mt-4 cursor-pointer mx-1
                 px-2 border-b-4 border-armadillo-900 hover:border-armadillo-700 rounded')
-            ).concat(
-                tag.span article.total_votes, class: %w( mx-1 my-2 text-armadillo-500 )
-            ).concat(
-              link_to('Edit', edit_article_path(article), class: '
-                bg-armadillo-700 hover:bg-armadillo-600
-                text-white font-normal py-2 mt-4 cursor-pointer mx-1
-                px-2 border-b-4 border-armadillo-900 hover:border-armadillo-700 rounded')
-            ).concat(
-              link_to('Back', articles_path, class: 'mx-1 my-2 text-armadillo-500')
-            )
-          end
-        )
+              ).concat(
+                link_to('Back', articles_path, class: 'mx-1 my-2 text-armadillo-500')
+              )
+        end
+      )
   end
 end

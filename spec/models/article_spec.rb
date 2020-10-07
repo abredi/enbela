@@ -7,7 +7,7 @@ RSpec.describe Article, type: :model do
 
   let(:user) { subject.user }
   let(:category) { subject.category }
-  let(:top_category) { Category.order('priority desc').select('*') }
+  let(:top_category) { Category.order('priority desc').limit(1) }
 
   context 'Validations' do
     it { expect(subject).to validate_presence_of(:title) }
@@ -28,10 +28,10 @@ RSpec.describe Article, type: :model do
 
   context 'Scope' do
     it { expect(Article.cat_list).to be_instance_of(Array) }
-    it { expect(Article.cat_list[0].category).to be_instance_of(Category) }
-    it { expect(Article.cat_list[0].category_id).to eq(top_category.id) }
-    it { expect(Article.cat_list[0].name).to eq(top_category.name) }
+    it { expect(Article.cat_list.last.category).to be_instance_of(Category) }
     it { expect(Article.articles(subject.category.id)).to be_instance_of(Array) }
+    it { expect(Article.cat_list.last.category_id).to eq(top_category[0].id) }
+    it { expect(Article.cat_list.last.name).to eq(top_category[0].name) }
     it { expect(Article.articles(subject.category.id)[0].user).to be_instance_of(User) }
     it { expect(Article.articles(subject.category.id)[0].title).to eq(subject.title) }
     it { expect(Article.featured.length).to eq(1) }
