@@ -30,10 +30,15 @@ git clone https://github.com/abredi/enbela.git
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
+```
+Install npm packages:
+
+```
+yarn install --check-files
 ```
 
 Setup database with:
