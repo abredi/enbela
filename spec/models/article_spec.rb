@@ -30,9 +30,9 @@ RSpec.describe Article, type: :model do
 
   context 'Scope' do
     it { expect(Article.cat_list).to be_instance_of(Array) }
-    it { expect(Article.cat_list.last.category).to be_instance_of(Category) }
-    it { expect(Article.cat_list.last.category_id).to eq(top_category[0].id) }
-    it { expect(Article.cat_list.last.name).to eq(top_category[0].name) }
+    it { expect(Article.cat_list.first.category).to be_instance_of(Category) }
+    it { expect(Article.cat_list.first.category_id).to eq(top_category[0].id) }
+    it { expect(Article.cat_list.first.name).to eq(top_category[0].name) }
     it { expect(Article.articles(subject.category.id, user1.id)).to be_instance_of(Array) }
     it { expect(Article.articles(subject.category.id, user1.id)[0].user).to be_instance_of(User) }
     it { expect(Article.articles(subject.category.id, user1.id)[0].title).to eq(subject.title) }
