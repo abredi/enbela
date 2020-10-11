@@ -1,0 +1,10 @@
+section.py-8.min-h-75
+  div.w-full.max-w-sm.mx-auto
+    h1.text-2xl.text-center.mb-4 Editing article
+
+  == render 'form'
+
+  => link_to 'Show', @article
+  '|
+  =< link_to 'Back', articles_path
+

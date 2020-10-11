@@ -1,0 +1,24 @@
+.flex.px-4.py-4.bg-gray-200.text-gray-700.font-medium.text-sm.uppercase
+  span.brand
+    = image_tag('logo.svg', class: 'w-24 h-full bg-no-repeat border-none')
+
+  ul.flex.flex-1.justify-center
+    li.px-1.py-2.m-1
+      = menu_link_to 'Home', root_path
+    li.px-1.py-2.m-1
+      = menu_link_to 'Write an article', new_article_path, cls: 'write_article'
+  ul.flex.left-corner.flex-none
+
+    li.px-1.py-2.m-1.grid.grid-cols-2.divide-x.divide-gray-700
+
+      = auth_links
+
+    li.px-1.py-2.m-1
+      a.hover:bg-transparent.hover:text-orange-1000 href="#"
+        svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+
+.bg-gray-400.w-100.h-1
+  .bg-orange-500.h-1 class="w-2/12"
+
+- notification_banner

@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* purgecss start ignore */
+.min-h-75 {
+  min-height: 75vh;
+}
+
+.w-maxContent {
+  width: max-content;
+}
+
+/* purgecss end ignore */
+@import 'tailwindcss/utilities';

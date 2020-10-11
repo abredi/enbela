@@ -1,0 +1,21 @@
+doctype html
+html lang='en'
+  head
+    meta charset='UTF-8'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title Enbla Recipes
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body.font-sans.flex.flex-col.bg-gray-900.text-gray-200
+
+    include _header.html
+
+    = yield
+
+    include _footer.html
